@@ -51,7 +51,7 @@ const sheetId = computed(() => {
     return `${companyId.value} ${employeeId.value} ${periodCode.value}`
 })
 
-function getWorkingCount(date) {
+function getWorkingCount (date) {
     if (dateHolidays.isHoliday(date)) return "Fér."
     if (isSaturday(date) || isSunday(date)) return
     if (!workingDays?.value?.includes(getDay(date))) return "Non travaillé"

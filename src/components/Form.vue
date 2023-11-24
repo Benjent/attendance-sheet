@@ -7,7 +7,7 @@ import { COMPANY_ID_LENGTH, EMPLOYEE_ID_LENGTH, PERIOD_CODE_LENGTH } from "@/glo
 const { companyId, companyName, employeeFullName, employeeId, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
 const { periodCode } = storeToRefs(usePeriodStore())
 
-function retrieveEmployeeDetails() {
+function retrieveEmployeeDetails () {
     companyId.value = localStorage.getItem("companyId") || ""
     companyName.value = localStorage.getItem("companyName") || ""
     employeeId.value = localStorage.getItem("employeeId") || ""
@@ -18,7 +18,7 @@ function retrieveEmployeeDetails() {
 }
 retrieveEmployeeDetails()
 
-function saveEmployeeDetails() {
+function saveEmployeeDetails () {
     companyId.value && localStorage.setItem("companyId", companyId.value)
     companyName.value && localStorage.setItem("companyName", companyName.value)
     employeeId.value && localStorage.setItem("employeeId", employeeId.value)
