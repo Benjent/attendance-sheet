@@ -6,7 +6,7 @@ import { fr } from "date-fns/locale"
 import Holidays from "date-holidays"
 import { useEmployeeStore } from "@/stores/employee"
 import { usePeriodStore } from "@/stores/period"
-import { DAYS_IN_WEEK, PERIOD_CODE_LENGTH } from "@/globals"
+import { DAYS_IN_WEEK, FIRST_ELIGIBLE_PERIOD_DAY, PERIOD_CODE_LENGTH } from "@/globals"
 
 setDefaultOptions({ locale: fr })
 const dateHolidays = new Holidays("FR")
@@ -14,7 +14,7 @@ const dateHolidays = new Holidays("FR")
 const { companyId, companyName, employeeFullName, employeeId, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
 const { periodCode } = storeToRefs(usePeriodStore())
 
-
+// Periods are made of complete weeks (from Monday to Sunday) starting from the 16th of each month and ending so at the 15th of the following month
 const periodStartDate = computed(() => {
     if (!periodCode.value || periodCode.value.length !== PERIOD_CODE_LENGTH) return
     const [periodYear, periodMonth] = periodCode.value.split(" ")
@@ -22,15 +22,14 @@ const periodStartDate = computed(() => {
     const month = +periodMonth
     const monthIndex = month - 1
     const previousMonthIndex = monthIndex - 1
-    const date = new Date(year, previousMonthIndex, 16) // TODO better name TODO 16 and 15 GLOBAL
-    return isMonday(date) ? date : startOfWeek(addWeeks(date, 1))
-    // Business rule : du 16 au 15 mais semaine complète TODO explain
+    const earliestEligibleDate = new Date(year, previousMonthIndex, FIRST_ELIGIBLE_PERIOD_DAY)
+    return isMonday(earliestEligibleDate) ? earliestEligibleDate : startOfWeek(addWeeks(earliestEligibleDate, 1))
 })
 
 const periodEndDate = computed(() => {
     if (!periodStartDate.value) return
-    const date = new Date(getYear(periodStartDate.value), getMonth(periodStartDate.value) + 1, 15) // TODO better name
-    return isSunday(date) ? date : endOfWeek(date) // TODO vérifier février ?
+    const earliestEligibleDate = new Date(getYear(periodStartDate.value), getMonth(periodStartDate.value) + 1, FIRST_ELIGIBLE_PERIOD_DAY - 1)
+    return isSunday(earliestEligibleDate) ? earliestEligibleDate : endOfWeek(earliestEligibleDate) // TODO vérifier février ?
 })
 
 const periodDays = computed(() => {
