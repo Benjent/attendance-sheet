@@ -9,11 +9,11 @@ import { usePeriodStore } from "@/stores/period"
 import { DAYS_IN_WEEK, PERIOD_CODE_LENGTH } from "@/globals"
 
 setDefaultOptions({ locale: fr })
+const dateHolidays = new Holidays("FR")
 
 const { companyId, companyName, employeeFullName, employeeId, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
 const { periodCode } = storeToRefs(usePeriodStore())
 
-const dateHolidays = new Holidays("FR") // TODO utils ?
 
 const periodStartDate = computed(() => {
     if (!periodCode.value || periodCode.value.length !== PERIOD_CODE_LENGTH) return
