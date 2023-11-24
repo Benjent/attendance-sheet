@@ -50,5 +50,7 @@ npm run build
 npm run test:e2e
 ```
 
+- TODO https://EditorConfig.org
+- TODO https://eslint.org/
 - TODO https://date-fns.org/
 - TODO https://www.npmjs.com/package/date-holidays
