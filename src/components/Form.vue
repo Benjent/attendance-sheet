@@ -25,22 +25,31 @@ function saveEmployeeDetails() {
     localStorage.setItem("workingHourCount", workingHourCount.value)
 }
 
-function printPreview() {
-    // TODO
-    /*
-    let styleshtml = '';
-    for (const node of [...document.queryselectorall('link[rel="stylesheet"], style')]) { // Replace with <style> ?
-        styleshtml += node.outerhtml;
-    }
-    */
-    const printHtml = document.querySelector("#preview").innerHTML // TODO use refs
-    const printWindow = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0')
-    printWindow.document.write(printHtml)
-    printWindow.document.close()
-    printWindow.focus()
-    printWindow.print()
-    printWindow.close()
-}
+// function printPreview () {
+//     let stylesHtml = ""
+//     for (const node of [...document.querySelectorAll("style[type='text/css']")]) {
+//         stylesHtml += node.outerhtml
+//     }
+
+//     const printHtml = document.querySelector("#preview").innerHTML // TODO use refs
+//     const printWindow = window.open("", "", "left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0")
+//     printWindow.document.write(`
+//         <!DOCTYPE html>
+//         <html>
+//             <head>
+//                 ${stylesHtml}
+//                 <title>TODO auto fixer initiales</title>
+//             </head>
+//             <body>
+//                 ${printHtml}
+//             </body>
+//         </html>
+//     `)
+//     printWindow.document.close()
+//     printWindow.focus()
+//     printWindow.print()
+//     printWindow.close()
+// }
 </script>
 
 <template>
