@@ -35,3 +35,8 @@ npm run build
 - TODO https://date-fns.org/
 - TODO https://www.npmjs.com/package/date-holidays
 - TODO https://tailwindcss.com/
+
+TODO handle jours de congés (début, fin)
+TODO handle signature upload
+TODO make this doc beautiful
+TODO autodeploy on main push

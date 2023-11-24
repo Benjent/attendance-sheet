@@ -97,7 +97,6 @@ function getWorkingCount (date) {
                 <th class="border border-black leading-none">Heure arrivée</th>
                 <th class="border border-black leading-none">Heure départ</th>
                 <th v-for="index in 7" :key="index" class="border border-black" :class="{ 'border-0': index === 3 }">{{ index === 3 ? "" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" }}</th>
-                <!-- <th style="border: none;">CP</th> TODO allow congés payés to be easily applied -->
             </tr>
         </thead>
         <tbody>
@@ -111,7 +110,6 @@ function getWorkingCount (date) {
                     <th class="border border-black capitalize text-right text-sm">{{ format(day, "E dd/MM").replace(".", "") }}</th>
                     <td class="border border-black"><input class="h-full w-20" :value="getWorkingCount(day)" /></td>
                     <td v-for="index in 15" :key="index" class="border border-black" :class="{ 'border-0': index === 11 }" />
-                    <!-- <td style="border: none;"><input type="checkbox" :checked="false" /></td> -->
                 </template>
             </tr>
         </tbody>
