@@ -92,7 +92,7 @@ function getWorkingCount(date) {
         <tbody>
             <tr v-for="day in periodDays" :key="day">
                 <th colspan="2">{{ format(day, "E dd/MM").replace(".", "") }}</th>
-                <td colspan="2">{{ getWorkingCount(day) }}</td>
+                <td colspan="2"><input :value="getWorkingCount(day)" /></td>
                 <td />
                 <td />
                 <td />
