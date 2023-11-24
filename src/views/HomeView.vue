@@ -5,7 +5,7 @@ import Preview from '../components/Preview.vue';
 
 <template>
   <main class="flex items-center h-screen px-20 py-10">
-    <Form class="form" />
-    <Preview class="preview" />
+    <Form />
+    <Preview />
   </main>
 </template>
