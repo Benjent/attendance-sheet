@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue"
 import { storeToRefs } from "pinia"
-import { addWeeks, eachDayOfInterval, endOfWeek, format, getDay, getMonth, getYear, isMonday, isSaturday, isSunday, setDefaultOptions, startOfWeek } from "date-fns"
+import { addWeeks, eachDayOfInterval, endOfWeek, format, getDay, getMonth, getYear, isMonday, isSaturday, isSunday, isValid, setDefaultOptions, startOfWeek } from "date-fns"
 import { fr } from "date-fns/locale"
 import Holidays from "date-holidays"
 import { useEmployeeStore } from "@/stores/employee"
@@ -63,7 +63,7 @@ function getWorkingCount(date) {
   <div class="preview bg-white p-6 pr-10 h-full overflow-y-scroll print:overflow-y-visible shadow" id="preview">
     <div class="flex">
         <span class="uppercase">{{ companyName }}</span>
-        <span class="flex-1" /><span class="px-10 py-1 text-xl">{{ format(periodEndDate, "MMMM yyyy") }}</span>
+        <span class="flex-1" /><span class="px-10 py-1 text-xl">{{ isValid(periodEndDate) && format(periodEndDate, "MMMM yyyy") }}</span>
         <span>{{ sheetId }}</span>
     </div>
     <table class="border-collapse text-xs ">
@@ -72,8 +72,8 @@ function getWorkingCount(date) {
                 <th colspan="6" class="text-left pl-5">{{ employeeFullName }}</th>
                 <th colspan="4" class="border border-black uppercase">Horaires de travail</th>
                 <th colspan="7">
-                    Du <span class="text-base">{{ periodStartDate && format(periodStartDate, "dd/MM") }}</span>
-                    au <span class="text-base">{{ periodEndDate && format(periodEndDate, "dd/MM") }}</span>
+                    Du <span class="text-base">{{ isValid(periodStartDate) && format(periodStartDate, "dd/MM") }}</span>
+                    au <span class="text-base">{{ isValid(periodEndDate) && format(periodEndDate, "dd/MM") }}</span>
                 </th>
             </tr>
             <tr class="h-10">
