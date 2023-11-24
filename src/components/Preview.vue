@@ -13,7 +13,6 @@ const { companyId, companyName, employeeFullName, employeeId, workingDays, worki
 const { periodCode } = storeToRefs(usePeriodStore())
 
 const dateHolidays = new Holidays("FR") // TODO utils ?
-// const isHoliday = dateHolidays.isHoliday
 
 const periodStartDate = computed(() => {
     if (!periodCode.value || periodCode.value.length !== 5) return // TODO 5 GLOBAL
