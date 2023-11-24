@@ -54,3 +54,4 @@ npm run test:e2e
 - TODO https://eslint.org/
 - TODO https://date-fns.org/
 - TODO https://www.npmjs.com/package/date-holidays
+- TODO https://tailwindcss.com/
