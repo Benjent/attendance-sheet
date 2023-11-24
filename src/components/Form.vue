@@ -8,22 +8,23 @@ const { companyId, companyName, employeeFullName, employeeId, workingDays, worki
 const { periodCode } = storeToRefs(usePeriodStore())
 
 function retrieveEmployeeDetails() {
-    companyId.value = localStorage.getItem("companyId")
-    companyName.value = localStorage.getItem("companyName")
-    employeeId.value = localStorage.getItem("employeeId")
-    employeeFullName.value = localStorage.getItem("employeeFullName")
-    workingDays.value = JSON.parse(localStorage.getItem("workingDays"))
-    workingHourCount.value = localStorage.getItem("workingHourCount")
+    companyId.value = localStorage.getItem("companyId") || ""
+    companyName.value = localStorage.getItem("companyName") || ""
+    employeeId.value = localStorage.getItem("employeeId") || ""
+    employeeFullName.value = localStorage.getItem("employeeFullName") || ""
+    const localStorageWorkingDays = JSON.parse(localStorage.getItem("workingDays"))
+    workingDays.value = Array.isArray(localStorageWorkingDays) ? localStorageWorkingDays : [1, 2, 3, 4, 5]
+    workingHourCount.value = localStorage.getItem("workingHourCount") || 7
 }
 retrieveEmployeeDetails()
 
 function saveEmployeeDetails() {
-    localStorage.setItem("companyId", companyId.value)
-    localStorage.setItem("companyName", companyName.value)
-    localStorage.setItem("employeeId", employeeId.value)
-    localStorage.setItem("employeeFullName", employeeFullName.value)
+    companyId.value && localStorage.setItem("companyId", companyId.value)
+    companyName.value && localStorage.setItem("companyName", companyName.value)
+    employeeId.value && localStorage.setItem("employeeId", employeeId.value)
+    employeeFullName.value && localStorage.setItem("employeeFullName", employeeFullName.value)
     localStorage.setItem("workingDays", JSON.stringify(workingDays.value))
-    localStorage.setItem("workingHourCount", workingHourCount.value)
+    workingHourCount.value && localStorage.setItem("workingHourCount", workingHourCount.value)
 }
 
 function printPreview () {
