@@ -92,5 +92,12 @@ function printPreview () {
         </label>
         <p>Penser à désactiver les marges dans la fenêtre d'impression.</p>
         <button class="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 font-semibold text-white rounded shadow" @click="printPreview" type="submit">Générer pdf</button>
+        <footer class="flex flex-col gap-2">
+            <p>Meilleur rendu avec</p>
+            <div class="flex gap-2 justify-center">
+                <img class="max-h-10" src="@/assets/images/logos/brave.png" alt="Logo du navigateur web Brave" />
+                <img class="max-h-10" src="@/assets/images/logos/google-chrome.png" alt="Logo du navigateur web Google Chrome" />
+            </div>
+        </footer>
     </form>
 </template>
