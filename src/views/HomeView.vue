@@ -13,7 +13,8 @@ import Preview from '../components/Preview.vue';
 <style scoped>
 main {
     display: flex;
-    background: rgb(204,204,204);
+    align-items: center;
+    height: 100vh;
 }
 
 .form {

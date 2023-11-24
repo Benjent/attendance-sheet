@@ -137,6 +137,8 @@ table {
     color: black;
     width: 210mm;
     height: 297mm;
+    overflow-y: scroll;
+    max-height: 90vh;
 }
 
 table, thead, tr, th, td {
