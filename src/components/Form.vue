@@ -2,6 +2,7 @@
 import { storeToRefs } from "pinia"
 import { useEmployeeStore } from "@/stores/employee"
 import { usePeriodStore } from "@/stores/period"
+import { COMPANY_ID_LENGTH, EMPLOYEE_ID_LENGTH, PERIOD_CODE_LENGTH } from "@/globals"
 
 const { companyId, companyName, employeeFullName, employeeId, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
 const { periodCode } = storeToRefs(usePeriodStore())
@@ -41,7 +42,7 @@ function printPreview () {
                     </label>
                     <label class="flex flex-col">
                         ID de l'entreprise
-                        <input v-model="companyId" maxlength="5" class="py-1 px-2 rounded border border-b-2" /> <!-- TODO GLOBAL -->
+                        <input v-model="companyId" :maxlength="COMPANY_ID_LENGTH" class="py-1 px-2 rounded border border-b-2" />
                     </label>
                     <label class="flex flex-col">
                         Nom complet de l'employé
@@ -49,7 +50,7 @@ function printPreview () {
                     </label>
                     <label class="flex flex-col">
                         ID de l'employé
-                        <input v-model="employeeId" maxlength="3" class="py-1 px-2 rounded border border-b-2" /> <!-- TODO GLOBAL -->
+                        <input v-model="employeeId" :maxlength="EMPLOYEE_ID_LENGTH" class="py-1 px-2 rounded border border-b-2" />
                     </label>
                 </div>
                 <div class="flex flex-col gap-5 justify-between">
@@ -86,7 +87,7 @@ function printPreview () {
         </fieldset>
         <label class="flex flex-col">
             Période
-            <input v-model="periodCode" placeholder="YY MM" maxlength="5" class="w-20 py-1 px-2 rounded border border-b-2" />  <!-- TODO BLOBAL -->
+            <input v-model="periodCode" placeholder="YY MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 py-1 px-2 rounded border border-b-2" />
         </label>
         <p>Penser à désactiver les marges dans la fenêtre d'impression.</p>
         <button class="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 font-semibold text-white rounded shadow" @click="printPreview" type="submit">Générer pdf</button>

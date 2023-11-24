@@ -6,6 +6,7 @@ import { fr } from "date-fns/locale"
 import Holidays from "date-holidays"
 import { useEmployeeStore } from "@/stores/employee"
 import { usePeriodStore } from "@/stores/period"
+import { DAYS_IN_WEEK, PERIOD_CODE_LENGTH } from "@/globals"
 
 setDefaultOptions({ locale: fr })
 
@@ -15,7 +16,7 @@ const { periodCode } = storeToRefs(usePeriodStore())
 const dateHolidays = new Holidays("FR") // TODO utils ?
 
 const periodStartDate = computed(() => {
-    if (!periodCode.value || periodCode.value.length !== 5) return // TODO 5 GLOBAL
+    if (!periodCode.value || periodCode.value.length !== PERIOD_CODE_LENGTH) return
     const [periodYear, periodMonth] = periodCode.value.split(" ")
     const year = `20${periodYear}`
     const month = +periodMonth
@@ -40,7 +41,7 @@ const periodDays = computed(() => {
 const tableRows = computed(() => {
     return periodDays.value.reduce((days, day, index) => {
         days.push(day)
-        if ((index + 1) % 7 === 0) { // TODO global days in week
+        if ((index + 1) % DAYS_IN_WEEK === 0) {
             days.push(null)
         }
         return days
