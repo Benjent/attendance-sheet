@@ -44,7 +44,7 @@ function printPreview() {
 </script>
 
 <template>
-    <form class="flex flex-col flex-1 gap-10 p-20 items-center">
+    <form class="flex flex-col flex-1 gap-10 p-20 items-center print:hidden">
         <fieldset class="flex flex-col gap-5 items-center">
             <div class="flex gap-5">
                 <div class="flex flex-col gap-5 justify-between">
