@@ -25,31 +25,9 @@ function saveEmployeeDetails() {
     localStorage.setItem("workingHourCount", workingHourCount.value)
 }
 
-// function printPreview () {
-//     let stylesHtml = ""
-//     for (const node of [...document.querySelectorAll("style[type='text/css']")]) {
-//         stylesHtml += node.outerhtml
-//     }
-
-//     const printHtml = document.querySelector("#preview").innerHTML // TODO use refs
-//     const printWindow = window.open("", "", "left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0")
-//     printWindow.document.write(`
-//         <!DOCTYPE html>
-//         <html>
-//             <head>
-//                 ${stylesHtml}
-//                 <title>TODO auto fixer initiales</title>
-//             </head>
-//             <body>
-//                 ${printHtml}
-//             </body>
-//         </html>
-//     `)
-//     printWindow.document.close()
-//     printWindow.focus()
-//     printWindow.print()
-//     printWindow.close()
-// }
+function printPreview () {
+    window.print()
+}
 </script>
 
 <template>
@@ -110,6 +88,7 @@ function saveEmployeeDetails() {
             Période
             <input v-model="periodCode" placeholder="YY MM" maxlength="5" class="w-20 py-1 px-2 rounded border border-b-2" />  <!-- TODO BLOBAL -->
         </label>
+        <p>Penser à désactiver les marges dans la fenêtre d'impression.</p>
         <button class="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 font-semibold text-white rounded shadow" @click="printPreview" type="submit">Générer pdf</button>
     </form>
 </template>
