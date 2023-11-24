@@ -44,70 +44,63 @@ function printPreview() {
 </script>
 
 <template>
-    <form class="form">
-        <label>
-            Nom de l'entreprise
-            <input v-model="companyName" />
-        </label>
-        <label>
-            ID de l'entreprise
-            <input v-model="companyId" maxlength="5" /> <!-- TODO GLOBAL -->
-        </label>
-        <label>
-            Nom complet de l'employé
-            <input v-model="employeeFullName" placeholder="FAMILY NAME Given Name Middle Names" />
-        </label>
-        <label>
-            ID de l'employé
-            <input v-model="employeeId" maxlength="3" /> <!-- TODO GLOBAL -->
-        </label>
-        <label>
-            Heures travaillées par défaut
-            <input v-model.number="workingHourCount" />
-        </label>
-        <fieldset>
-            <legend>Jours travaillés par défaut</legend>
-            <label>
-                Lundi
-                <input v-model="workingDays" type="checkbox" :value="1" />
-            </label>
-            <label>
-                Mardi
-                <input v-model="workingDays" type="checkbox" :value="2" />
-            </label>
-            <label>
-                Mercredi
-                <input v-model="workingDays" type="checkbox" :value="3" />
-            </label>
-            <label>
-                Jeudi
-                <input v-model="workingDays" type="checkbox" :value="4" />
-            </label>
-            <label>
-                Vendredi
-                <input v-model="workingDays" type="checkbox" :value="5" />
-            </label>
+    <form class="flex flex-col flex-1 gap-10 p-20 items-center">
+        <fieldset class="flex flex-col gap-5 items-center">
+            <div class="flex gap-5">
+                <div class="flex flex-col gap-5 justify-between">
+                    <label class="flex flex-col">
+                        Nom de l'entreprise
+                        <input v-model="companyName" class="py-1 px-2 rounded border border-b-2" />
+                    </label>
+                    <label class="flex flex-col">
+                        ID de l'entreprise
+                        <input v-model="companyId" maxlength="5" class="py-1 px-2 rounded border border-b-2" /> <!-- TODO GLOBAL -->
+                    </label>
+                    <label class="flex flex-col">
+                        Nom complet de l'employé
+                        <input v-model="employeeFullName" placeholder="FAMILY NAME Given Name Middle Names" class="py-1 px-2 rounded border border-b-2" />
+                    </label>
+                    <label class="flex flex-col">
+                        ID de l'employé
+                        <input v-model="employeeId" maxlength="3" class="py-1 px-2 rounded border border-b-2" /> <!-- TODO GLOBAL -->
+                    </label>
+                </div>
+                <div class="flex flex-col gap-5 justify-between">
+                    <label class="flex flex-col">
+                        Heures travaillées par défaut
+                        <input v-model.number="workingHourCount" type="number" class="w-20 py-1 px-2 rounded border border-b-2" />
+                    </label>
+                    <fieldset class="flex flex-col">
+                        <legend>Jours travaillés par défaut</legend>
+                        <label>
+                            <input v-model="workingDays" type="checkbox" :value="1" />
+                            Lundi
+                        </label>
+                        <label>
+                            <input v-model="workingDays" type="checkbox" :value="2" />
+                            Mardi
+                        </label>
+                        <label>
+                            <input v-model="workingDays" type="checkbox" :value="3" />
+                            Mercredi
+                        </label>
+                        <label>
+                            <input v-model="workingDays" type="checkbox" :value="4" />
+                            Jeudi
+                        </label>
+                        <label>
+                            <input v-model="workingDays" type="checkbox" :value="5" />
+                            Vendredi
+                        </label>
+                    </fieldset>
+                </div>
+            </div>
+            <button class="py-2 px-4 bg-transparent hover:bg-purple-500 font-semibold hover:text-white border border-purple-500 hover:border-transparent rounded shadow" @click="saveEmployeeDetails" type="submit">Sauvegarder les informations de l'employé</button>
         </fieldset>
-        <button @click="saveEmployeeDetails" type="submit">Sauvegarder les informations de l'employé</button>
-        <label>
+        <label class="flex flex-col">
             Période
-            <input v-model="periodCode" placeholder="YY MM" maxlength="5" />  <!-- TODO BLOBAL -->
+            <input v-model="periodCode" placeholder="YY MM" maxlength="5" class="w-20 py-1 px-2 rounded border border-b-2" />  <!-- TODO BLOBAL -->
         </label>
-        <button @click="printPreview" type="submit">Générer pdf</button>
+        <button class="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 font-semibold text-white rounded shadow" @click="printPreview" type="submit">Générer pdf</button>
     </form>
 </template>
-
-<style scoped>
-/* TODO scss/tailwind */
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-end;
-    padding: 120px;
-}
-
-.form button {
-    align-self: center
-}
-</style>

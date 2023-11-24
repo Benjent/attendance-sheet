@@ -4,20 +4,8 @@ import Preview from '../components/Preview.vue';
 </script>
 
 <template>
-  <main>
+  <main class="flex items-center h-screen px-20 py-10">
     <Form class="form" />
     <Preview class="preview" />
   </main>
 </template>
-
-<style scoped>
-main {
-    display: flex;
-    align-items: center;
-    height: 100vh;
-}
-
-.form {
-    width: 33%;
-}
-</style>

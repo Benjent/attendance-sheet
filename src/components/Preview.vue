@@ -57,12 +57,10 @@ function getWorkingCount(date) {
     if (isSaturday(date) || isSunday(date)) return
     return workingHourCount.value
 }
-
-// TODO each td cell should be an input so that people can edit
 </script>
 
 <template>
-  <div class="preview p-6 pr-10" id="preview">
+  <div class="preview bg-white p-6 pr-10 h-full overflow-y-scroll shadow" id="preview" width="210mm">
     <div class="flex">
         <span class="uppercase">{{ companyName }}</span>
         <span class="flex-1" /><span class="px-10 py-1 text-xl">{{ format(periodEndDate, "MMMM yyyy") }}</span>
@@ -122,29 +120,8 @@ function getWorkingCount(date) {
 </template>
 
 <style scoped>
-@media print {
-  /* .div[size="A4"] {
-    margin: 0;
-    border: initial;
-    border-radius: initial;
-    width: initial;
-    min-height: initial;
-    box-shadow: initial;
-    background: initial;
-    page-break-after: always;
-  } */
-}
-
-table {
-    width: 100%;
-}
-
 .preview {
-    background: white;
-    color: black;
     width: 210mm;
-    height: 297mm;
-    overflow-y: scroll;
-    max-height: 90vh;
+    /* height: 297mm; */
 }
 </style>
