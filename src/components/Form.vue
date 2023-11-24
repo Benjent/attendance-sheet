@@ -8,10 +8,10 @@ const { companyId, companyName, employeeFullName, employeeId, workingDays, worki
 const { periodCode } = storeToRefs(usePeriodStore())
 
 function retrieveEmployeeDetails () {
-    companyId.value = localStorage.getItem("companyId") || ""
-    companyName.value = localStorage.getItem("companyName") || ""
-    employeeId.value = localStorage.getItem("employeeId") || ""
-    employeeFullName.value = localStorage.getItem("employeeFullName") || ""
+    companyId.value = localStorage.getItem("companyId") || "06753"
+    companyName.value = localStorage.getItem("companyName") || "SCOP Les Octets Libres"
+    employeeId.value = localStorage.getItem("employeeId") || "011"
+    employeeFullName.value = localStorage.getItem("employeeFullName") || "MORVAN Benjamin Jean"
     const localStorageWorkingDays = JSON.parse(localStorage.getItem("workingDays"))
     workingDays.value = Array.isArray(localStorageWorkingDays) ? localStorageWorkingDays : [1, 2, 3, 4, 5]
     workingHourCount.value = localStorage.getItem("workingHourCount") || 7
