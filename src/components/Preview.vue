@@ -53,9 +53,9 @@ const sheetId = computed(() => {
 
 function getWorkingCount(date) {
     if (dateHolidays.isHoliday(date)) return "Fér."
-    if (!workingDays.value?.includes(getDay(date))) return "Non travaillé"
+    if (!workingDays?.value?.includes(getDay(date))) return "Non travaillé"
     if (isSaturday(date) || isSunday(date)) return
-    return workingHourCount.value
+    return workingHourCount?.value
 }
 </script>
 
