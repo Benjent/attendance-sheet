@@ -85,7 +85,7 @@ function printPreview () {
                         </fieldset>
                     </div>
                 </div>
-                <button class="py-2 px-4 bg-transparent bg-slate-700 hover:bg-slate-600 font-semibold rounded shadow" @click="saveEmployeeDetails" type="submit">Sauvegarder les informations de l'employé</button>
+                <button class="py-2 px-4 bg-transparent bg-slate-600 hover:bg-slate-500 font-semibold rounded shadow" @click="saveEmployeeDetails" type="submit">Sauvegarder les informations de l'employé</button>
             </fieldset>
             <label class="flex flex-col text-rose-300">
                 Période
