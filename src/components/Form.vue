@@ -33,10 +33,10 @@ function printPreview () {
 </script>
 
 <template>
-    <section class="h-full flex flex-1 justify-center gap-10 p-20 items-center print:hidden text-slate-100 italic shadow-inner">
+    <section class="h-full flex flex-1 justify-center gap-10 lg:p-20 items-center print:hidden text-slate-100 italic shadow-inner">
         <form class="h-full w-auto flex flex-col p-10 gap-10 items-center bg-slate-900 rounded-2xl shadow-2xl">
             <fieldset class="flex flex-col gap-5 items-center">
-                <div class="flex gap-5">
+                <div class="flex flex-col lg:flex-row gap-5">
                     <div class="flex flex-col gap-5 justify-between">
                         <label class="flex flex-col text-rose-300">
                             Nom de l'entreprise
