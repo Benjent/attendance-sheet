@@ -1,7 +1,11 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import Form from "@/components/Form.vue"
+import Preview from "@/components/Preview.vue"
 </script>
 
 <template>
-  <RouterView />
+    <main class="flex items-center h-screen bg-purple-100">
+        <Form />
+        <Preview />
+    </main>
 </template>
