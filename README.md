@@ -1,14 +1,35 @@
-# attendance-sheet
+# ![ICOOPA logo](https://www.icoopa.bzh/wp-content/themes/icoopa/library/images/header-logo-txt.png) attendance-sheet
 
-This template should help get you started developing with Vue 3 in Vite.
+![ICOOPA complementary logo](https://www.icoopa.bzh/wp-content/themes/icoopa/library/images/header-logo.png)
 
-## Recommended IDE Setup
+![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat) ![GitHub CI](https://github.com/Benjent/attendance-sheet/actions/workflows/main.yml/badge.svg)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+![GitHub Pages badge](https://img.shields.io/badge/GitHub_Pages-222222?logo=github&logoColor=white) ![Vue.js badge](https://img.shields.io/badge/Vue.js_2-42b883?logo=vuedotjs&logoColor=white) ![Tailwind CSS badge](https://img.shields.io/badge/Tailwind_CSS_-0ea5e9?logo=tailwindcss&logoColor=white) ![Conventional commits badge](https://img.shields.io/badge/Conventional_commits-fa6673?logo=conventionalcommits&logoColor=white) ![ESLint badge](https://img.shields.io/badge/ESLint-4b32c3?logo=eslint&logoColor=white)
 
-## Customize configuration
+Tiny web project to fill an [ICOOPA](https://www.icoopa.bzh/)-compliant attendance sheet.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This is a [Vue.js v3](https://vuejs.org/) project bootstrapped with [Create Vue](https://github.com/vuejs/create-vue).
+
+[See it live](https://benjent.github.io/attendance-sheet/).
+
+## Resources
+
+- [Vite](https://vitejs.dev/) (frontend tooling)
+- [Vue.js](https://vuejs.org/) (frontend library)
+- [Editor config](https://EditorConfig.org) (linting)
+- [ESLint](https://eslint.org/) (linting)
+- [Date-fns](https://date-fns.org/) (date handling)
+- [Date-holidays](https://www.npmjs.com/package/date-holidays) (date handling)
+- [Tailwind CSS](https://tailwindcss.com/) (CSS library)
+
+## TODO
+
+- [ ] Add annual leave completion
+- [ ] Add hand signature image upload
+
+## Prerequisites
+
+- [Node](https://nodejs.org/en/)
 
 ## Project Setup
 
@@ -27,16 +48,3 @@ npm run dev
 ```sh
 npm run build
 ```
-
-- TODO https://vitejs.dev/
-- TODO https://vuejs.org/
-- TODO https://EditorConfig.org
-- TODO https://eslint.org/
-- TODO https://date-fns.org/
-- TODO https://www.npmjs.com/package/date-holidays
-- TODO https://tailwindcss.com/
-
-TODO handle jours de congés (début, fin)
-TODO handle signature upload
-TODO make this doc beautiful
-TODO autodeploy on main push
