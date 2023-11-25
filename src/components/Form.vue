@@ -84,14 +84,14 @@ function printPreview () {
                     </fieldset>
                 </div>
             </div>
-            <button class="py-2 px-4 bg-transparent hover:bg-purple-500 font-semibold hover:text-white border border-purple-500 hover:border-transparent rounded shadow" @click="saveEmployeeDetails" type="submit">Sauvegarder les informations de l'employé</button>
+            <button class="py-2 px-4 bg-transparent hover:bg-amber-500 font-semibold hover:text-white border border-amber-500 hover:border-transparent rounded shadow" @click="saveEmployeeDetails" type="submit">Sauvegarder les informations de l'employé</button>
         </fieldset>
         <label class="flex flex-col">
             Période
             <input v-model="periodCode" placeholder="YY MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 py-1 px-2 rounded border border-b-2" />
         </label>
         <p>Penser à désactiver les marges dans la fenêtre d'impression.</p>
-        <button class="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 font-semibold text-white rounded shadow" @click="printPreview" type="submit">Générer pdf</button>
+        <button class="w-full py-2 px-4 bg-amber-500 hover:bg-amber-700 font-semibold text-white rounded shadow" @click="printPreview" type="submit">Générer pdf</button>
         <footer class="flex flex-col gap-2">
             <p>Meilleur rendu avec</p>
             <div class="flex gap-2 justify-center">

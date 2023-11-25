@@ -4,7 +4,7 @@ import Preview from "@/components/Preview.vue"
 </script>
 
 <template>
-    <main class="flex items-center h-screen bg-purple-100">
+    <main class="flex items-center h-screen bg-amber-50">
         <Form />
         <Preview />
     </main>
