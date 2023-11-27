@@ -43,69 +43,65 @@ onMounted(() => {
 </script>
 
 <template>
-    <form class="print:hidden w-auto flex flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic overflow-y-auto">
-        <form v-if="isEmployeeFormShown">
-            <fieldset class="flex flex-col gap-5 items-center">
-                <div class="flex flex-col gap-5">
-                    <label class="flex flex-col text-rose-300">
-                        Nom de l'entreprise
-                        <input v-model="companyName" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+    <form class="print:hidden h-screen w-auto flex flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic overflow-y-auto">
+        <form v-if="isEmployeeFormShown" class="h-full flex flex-col gap-5 items-center">
+            <div class="flex flex-col gap-5">
+                <label class="flex flex-col text-rose-300">
+                    Nom de l'entreprise
+                    <input v-model="companyName" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                </label>
+                <label class="flex flex-col text-rose-300">
+                    ID de l'entreprise
+                    <input v-model="companyId" :maxlength="COMPANY_ID_LENGTH" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                </label>
+                <label class="flex flex-col text-rose-300">
+                    Nom complet de l'employé
+                    <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénoms" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                </label>
+                <label class="flex flex-col text-rose-300">
+                    ID de l'employé
+                    <input v-model="employeeId" :maxlength="EMPLOYEE_ID_LENGTH" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                </label>
+                <label class="flex flex-col text-rose-300">
+                    Signature de l'employé
+                    <p class="text-white">
+                        Penser à ajouter
+                        <span class="font-mono text-sm text-cyan-400">
+                            class="<span class="text-amber-400">h-full w-full</span>"
+                        </span>
+                        au tag svg
+                    </p>
+                    <textarea v-model="employeeSignature" placeholder="<svg class='h-full w-full'>...</svg>" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                </label>
+                <label class="flex flex-col text-rose-300">
+                    Heures travaillées par défaut
+                    <input v-model.number="workingHourCount" type="number" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                </label>
+                <fieldset class="flex flex-col text-rose-300">
+                    <legend>Jours travaillés par défaut</legend>
+                    <label>
+                        <input v-model="workingDays" type="checkbox" :value="1" />
+                        Lundi
                     </label>
-                    <label class="flex flex-col text-rose-300">
-                        ID de l'entreprise
-                        <input v-model="companyId" :maxlength="COMPANY_ID_LENGTH" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <label>
+                        <input v-model="workingDays" type="checkbox" :value="2" />
+                        Mardi
                     </label>
-                    <label class="flex flex-col text-rose-300">
-                        Nom complet de l'employé
-                        <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénoms" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <label>
+                        <input v-model="workingDays" type="checkbox" :value="3" />
+                        Mercredi
                     </label>
-                    <label class="flex flex-col text-rose-300">
-                        ID de l'employé
-                        <input v-model="employeeId" :maxlength="EMPLOYEE_ID_LENGTH" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <label>
+                        <input v-model="workingDays" type="checkbox" :value="4" />
+                        Jeudi
                     </label>
-                    <label class="flex flex-col text-rose-300">
-                        Signature de l'employé
-                        <p class="text-white">
-                            Penser à ajouter
-                            <br />
-                            <span class="font-mono text-sm text-cyan-400">
-                                class="<span class="text-amber-400">h-full w-full</span>"
-                            </span>
-                            <br />
-                            au tag svg
-                        </p>
-                        <textarea v-model="employeeSignature" placeholder="<svg class='h-full w-full'>...</svg>" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <label>
+                        <input v-model="workingDays" type="checkbox" :value="5" />
+                        Vendredi
                     </label>
-                    <label class="flex flex-col text-rose-300">
-                        Heures travaillées par défaut
-                        <input v-model.number="workingHourCount" type="number" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
-                    </label>
-                    <fieldset class="flex flex-col text-rose-300">
-                        <legend>Jours travaillés par défaut</legend>
-                        <label>
-                            <input v-model="workingDays" type="checkbox" :value="1" />
-                            Lundi
-                        </label>
-                        <label>
-                            <input v-model="workingDays" type="checkbox" :value="2" />
-                            Mardi
-                        </label>
-                        <label>
-                            <input v-model="workingDays" type="checkbox" :value="3" />
-                            Mercredi
-                        </label>
-                        <label>
-                            <input v-model="workingDays" type="checkbox" :value="4" />
-                            Jeudi
-                        </label>
-                        <label>
-                            <input v-model="workingDays" type="checkbox" :value="5" />
-                            Vendredi
-                        </label>
-                    </fieldset>
-                </div>
-                <button class="py-2 px-4 bg-slate-600 hover:bg-slate-500 font-semibold rounded shadow" @click="saveEmployeeDetails" type="button">Sauvegarder mes informations</button>
-            </fieldset>
+                </fieldset>
+            </div>
+            <button class="py-2 px-4 bg-slate-600 hover:bg-slate-500 font-semibold rounded shadow" @click="saveEmployeeDetails" type="button">Sauvegarder mes informations</button>
         </form>
         <div v-else class="flex flex-col gap-5">
             <fieldset class="flex flex-col gap-5">
