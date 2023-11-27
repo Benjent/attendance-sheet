@@ -53,7 +53,7 @@ function printPreview () {
                 <div class="flex flex-col gap-5">
                     <label class="flex flex-col text-rose-300">
                         Nom complet de l'employé
-                        <input v-model="employeeFullName" placeholder="FAMILY NAME Given Name Middle Names" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                        <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénoms" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                     </label>
                     <label class="flex flex-col text-rose-300">
                         ID de l'employé
@@ -106,11 +106,11 @@ function printPreview () {
         <fieldset class="flex gap-5 items-center">
             <label class="flex flex-col text-rose-300">
                 Période
-                <input v-model="periodCode" placeholder="YY MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                <input v-model="periodCode" placeholder="AA MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
             </label>
             <label class="flex flex-col text-rose-300">
                 Comptable
-                <input v-model="accountant" placeholder="Given Name" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                <input v-model="accountant" placeholder="Prénom" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
             </label>
         </fieldset>
         <footer class="flex flex-col gap-4 items-center">
