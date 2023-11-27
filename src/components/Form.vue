@@ -63,7 +63,7 @@ function printPreview () {
                         Signature de l'employé
                         <p class="text-white">
                             Penser à ajouter
-                            <span class="font-mono text-cyan-400">
+                            <span class="font-mono text-sm text-cyan-400">
                                 class="<span class="text-amber-400">h-full w-full</span>"
                             </span>
                             au tag svg
