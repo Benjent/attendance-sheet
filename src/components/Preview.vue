@@ -118,14 +118,14 @@ function getWorkingCount (date) {
         <div class="flex w-full">
             <span class="uppercase text-right w-1/4">Congés payés du&nbsp;:</span>
             <span>
-                <input class="w-10" />/<input class="w-10" />/<input class="w-10" />
+                <input class="w-10 text-center" />/<input class="w-10 text-center" />/<input class="w-10 text-center" />
             </span>
             <span class="text-sm">(1er jour où le salarié aurait du travailler s'il n'était pas en congé)</span>
         </div>
         <div class="flex w-full">
             <span class="uppercase text-right w-1/4">au&nbsp;:</span>
             <span>
-                <input class="w-10" />/<input class="w-10" />/<input class="w-10" />
+                <input class="w-10 text-center" />/<input class="w-10 text-center" />/<input class="w-10 text-center" />
             </span>
             <span class="text-sm">(veille du jour de reprise)</span>
         </div>
