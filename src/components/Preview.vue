@@ -60,7 +60,7 @@ function getWorkingCount (date) {
 </script>
 
 <template>
-  <div class="preview bg-white p-6 pr-10 h-full overflow-y-scroll print:overflow-y-visible" id="preview">
+  <div class="preview bg-white p-6 pr-10 h-screen overflow-y-scroll print:overflow-y-visible" id="preview">
     <div class="flex">
         <span class="uppercase">{{ companyName }}</span>
         <span class="flex-1" /><span class="px-10 py-1 text-xl">{{ isValid(periodEndDate) && format(periodEndDate, "MMMM yyyy") }}</span>

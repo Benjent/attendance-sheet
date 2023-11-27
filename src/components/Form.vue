@@ -37,7 +37,7 @@ function printPreview () {
 </script>
 
 <template>
-    <form class="print:hidden h-full w-auto flex flex-col flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic">
+    <form class="print:hidden w-auto flex flex-col flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic overflow-y-auto">
         <fieldset class="flex flex-col gap-5 items-center">
             <div class="flex flex-col lg:flex-row gap-5">
                 <div class="flex flex-col gap-5">
