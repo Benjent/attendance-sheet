@@ -155,7 +155,7 @@ function getWorkingCount (date) {
                 <label class="flex flex-col border border-black h-full">
                     <span class="uppercase text-sm">Informations complémentaires&nbsp;:</span>
                     <div class="h-full m-2">
-                        <input class="w-full h-full" />
+                        <textarea class="w-full h-full resize-none" />
                     </div>
                 </label>
                 <p class="uppercase text-xs">En cas de sortie du salarié, compléter le cadre ci-joint</p>
