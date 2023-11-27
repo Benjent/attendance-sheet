@@ -9,6 +9,7 @@ export const useEmployeeStore = defineStore("employee", () => {
     const companyId = ref("")
     const workingDays = ref([1, 2, 3, 4, 5])
     const workingHourCount = ref(7)
+    const accountant = ref("")
 
-    return { companyId, companyName, employeeFullName, employeeId, employeeSignature, workingDays, workingHourCount }
+    return { accountant, companyId, companyName, employeeFullName, employeeId, employeeSignature, workingDays, workingHourCount }
 })

@@ -11,7 +11,7 @@ import { DAYS_IN_WEEK, FIRST_ELIGIBLE_PERIOD_DAY, PERIOD_CODE_LENGTH } from "@/g
 setDefaultOptions({ locale: fr })
 const dateHolidays = new Holidays("FR")
 
-const { companyId, companyName, employeeFullName, employeeId, employeeSignature, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
+const { accountant, companyId, companyName, employeeFullName, employeeId, employeeSignature, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
 const { periodCode } = storeToRefs(usePeriodStore())
 
 // Periods are made of complete weeks (from Monday to Sunday) starting from the 16th of each month and ending so at the 15th of the following month
@@ -146,7 +146,7 @@ function getWorkingCount (date) {
                     <div class="flex flex-col">
                         <span class="text-sm font-bold">{{ sheetId }}</span>
                         <span class="text-sm">Traitement par</span>
-                        <span class="font-bold">TODO</span>
+                        <span class="font-bold">{{ accountant }}</span>
                     </div>
                 </div>
                 <p class="text-xs">*&nbsp;: Utiliser les codes joints</p>
