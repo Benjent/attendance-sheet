@@ -24,8 +24,7 @@ This is a [Vue.js v3](https://vuejs.org/) project bootstrapped with [Create Vue]
 
 ## TODO
 
-- [ ] Add annual leave completion
-- [ ] Add hand signature image upload
+- [ ] Add annual leave completion (second page)
 
 ## Prerequisites
 
