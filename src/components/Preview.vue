@@ -11,7 +11,7 @@ import { DAYS_IN_WEEK, FIRST_ELIGIBLE_PERIOD_DAY, PERIOD_CODE_LENGTH } from "@/g
 setDefaultOptions({ locale: fr })
 const dateHolidays = new Holidays("FR")
 
-const { companyId, companyName, employeeFullName, employeeId, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
+const { companyId, companyName, employeeFullName, employeeId, employeeSignature, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
 const { periodCode } = storeToRefs(usePeriodStore())
 
 // Periods are made of complete weeks (from Monday to Sunday) starting from the 16th of each month and ending so at the 15th of the following month
@@ -114,6 +114,54 @@ function getWorkingCount (date) {
             </tr>
         </tbody>
     </table>
+    <footer class="grid w-full mt-20">
+        <div class="flex w-full">
+            <span class="uppercase text-right w-1/4">Congés payés du&nbsp;:</span>
+            <span>
+                <input class="w-10" />/<input class="w-10" />/<input class="w-10" />
+            </span>
+            <span class="text-sm">(1er jour où le salarié aurait du travailler s'il n'était pas en congé)</span>
+        </div>
+        <div class="flex w-full">
+            <span class="uppercase text-right w-1/4">au&nbsp;:</span>
+            <span>
+                <input class="w-10" />/<input class="w-10" />/<input class="w-10" />
+            </span>
+            <span class="text-sm">(veille du jour de reprise)</span>
+        </div>
+        <div class="flex gap-4">
+            <div>
+                <div>
+                    <span class="uppercase">Journée de solidarité&nbsp;:</span>
+                    <span> {{ workingHourCount }} heures, le</span>
+                    <span>
+                        <input class="w-10" />/<input class="w-10" />
+                    </span>
+                </div>
+                <div class="flex gap-2">
+                    <label class="flex flex-col border border-black flex-1 h-20">
+                        Signature du salarié&nbsp;:
+                        <span v-html="employeeSignature" class="w-full h-3/4" />
+                    </label>
+                    <div class="flex flex-col">
+                        <span class="text-sm font-bold">{{ sheetId }}</span>
+                        <span class="text-sm">Traitement par</span>
+                        <span class="font-bold">TODO</span>
+                    </div>
+                </div>
+                <p class="text-xs">*&nbsp;: Utiliser les codes joints</p>
+            </div>
+            <div>
+                <label class="flex flex-col border border-black h-full">
+                    <span class="uppercase text-sm">Informations complémentaires&nbsp;:</span>
+                    <div class="h-full m-2">
+                        <input class="w-full h-full" />
+                    </div>
+                </label>
+                <p class="uppercase text-xs">En cas de sortie du salarié, compléter le cadre ci-joint</p>
+            </div>
+        </div>
+    </footer>
   </div>
 </template>
 

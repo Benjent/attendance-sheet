@@ -4,7 +4,7 @@ import { useEmployeeStore } from "@/stores/employee"
 import { usePeriodStore } from "@/stores/period"
 import { COMPANY_ID_LENGTH, EMPLOYEE_ID_LENGTH, PERIOD_CODE_LENGTH } from "@/globals"
 
-const { companyId, companyName, employeeFullName, employeeId, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
+const { companyId, companyName, employeeFullName, employeeId, employeeSignature, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
 const { periodCode } = storeToRefs(usePeriodStore())
 
 function retrieveEmployeeDetails () {
@@ -12,6 +12,7 @@ function retrieveEmployeeDetails () {
     companyName.value = localStorage.getItem("companyName") || "SCOP Les Octets Libres"
     employeeId.value = localStorage.getItem("employeeId") || "011"
     employeeFullName.value = localStorage.getItem("employeeFullName") || "MORVAN Benjamin Jean"
+    employeeSignature.value = localStorage.getItem("employeeSignature") || ""
     const localStorageWorkingDays = JSON.parse(localStorage.getItem("workingDays"))
     workingDays.value = Array.isArray(localStorageWorkingDays) ? localStorageWorkingDays : [1, 2, 3, 4, 5]
     workingHourCount.value = localStorage.getItem("workingHourCount") || 7
@@ -23,6 +24,7 @@ function saveEmployeeDetails () {
     companyName.value && localStorage.setItem("companyName", companyName.value)
     employeeId.value && localStorage.setItem("employeeId", employeeId.value)
     employeeFullName.value && localStorage.setItem("employeeFullName", employeeFullName.value)
+    employeeSignature.value && localStorage.setItem("employeeSignature", employeeSignature.value)
     localStorage.setItem("workingDays", JSON.stringify(workingDays.value))
     workingHourCount.value && localStorage.setItem("workingHourCount", workingHourCount.value)
 }
@@ -53,6 +55,11 @@ function printPreview () {
                         <label class="flex flex-col text-rose-300">
                             ID de l'employé
                             <input v-model="employeeId" :maxlength="EMPLOYEE_ID_LENGTH" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                        </label>
+                        <label class="flex flex-col text-rose-300">
+                            Signature de l'employé
+                            <p>Penser à ajouter class="h-full w-full" au tag svg</p>
+                            <textarea v-model="employeeSignature" placeholder="<svg class='h-full w-full'>...</svg>" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                         </label>
                     </div>
                     <div class="flex flex-col gap-5 justify-between">
