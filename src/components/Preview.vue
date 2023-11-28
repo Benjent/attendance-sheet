@@ -109,7 +109,8 @@ function getWorkingCount (date) {
                 <template v-else>
                     <th class="border border-black capitalize text-right text-sm">{{ format(day, "E dd/MM").replace(".", "") }}</th>
                     <td class="border border-black"><input class="h-full w-20" :value="getWorkingCount(day)" /></td>
-                    <td v-for="index in 15" :key="index" class="border border-black" :class="{ 'border-0': index === 11 }" />
+                    <td v-for="index in 4" :key="index" class="border border-black"><input class="h-full w-9"  /></td>
+                    <td v-for="index in 11" :key="index" class="border border-black" :class="{ 'border-0': index === 7 }" />
                 </template>
             </tr>
         </tbody>
