@@ -115,7 +115,7 @@ function getWorkingCount (date) {
             </tr>
         </tbody>
     </table>
-    <footer class="grid w-full mt-20">
+    <footer class="grid w-full mt-8">
         <div class="flex w-full">
             <span class="uppercase text-right w-1/4">Congés payés du&nbsp;:</span>
             <span>
