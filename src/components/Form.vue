@@ -51,7 +51,7 @@ onMounted(() => {
                     <input v-model="companyName" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
-                    ID de l'entreprise
+                    Matricule de l'entreprise
                     <input v-model="companyId" :maxlength="COMPANY_ID_LENGTH" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
@@ -59,7 +59,7 @@ onMounted(() => {
                     <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénoms" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
-                    ID de l'employé
+                    Matricule de l'employé
                     <input v-model="employeeId" :maxlength="EMPLOYEE_ID_LENGTH" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
