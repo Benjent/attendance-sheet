@@ -134,7 +134,7 @@ function getWorkingCount (date) {
             <div>
                 <div>
                     <span class="uppercase">Journée de solidarité&nbsp;:</span>
-                    <span> {{ workingHourCount }} heures, le</span>
+                    <span><input class="w-5 text-center" /> heures, le</span>
                     <span>
                         <input class="w-10" />/<input class="w-10" />
                     </span>
