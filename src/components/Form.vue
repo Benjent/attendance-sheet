@@ -101,9 +101,10 @@ onMounted(() => {
                     </label>
                 </fieldset>
             </div>
-            <button class="py-2 px-4 bg-slate-600 hover:bg-slate-500 font-semibold rounded shadow" @click="saveEmployeeDetails" type="button">Sauvegarder mes informations</button>
+            <button class="py-2 px-4 bg-orange-700 hover:bg-orange-600 font-semibold rounded shadow" @click="saveEmployeeDetails" type="button">Sauvegarder mes informations</button>
         </form>
         <div v-else class="flex flex-col gap-5">
+            <button class="py-2 px-4 bg-orange-700 hover:bg-orange-600 font-semibold rounded shadow" @click="isEmployeeFormShown = true" type="button">Modifier mes informations</button>
             <fieldset class="flex flex-col gap-5">
                 <label class="flex flex-col text-rose-300">
                     Période
@@ -126,7 +127,6 @@ onMounted(() => {
                         <img class="max-h-10" src="@/assets/images/logos/google-chrome.png" alt="Logo du navigateur web Google Chrome" />
                     </div>
                 </div>
-                <button class="py-2 px-4 bg-slate-600 hover:bg-slate-500 font-semibold rounded shadow" @click="isEmployeeFormShown = true" type="button">Modifier mes informations</button>
             </footer>
         </div>
     </form>
