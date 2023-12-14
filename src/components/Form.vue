@@ -11,8 +11,8 @@ const { periodCode } = storeToRefs(usePeriodStore())
 function retrieveEmployeeDetails () {
     companyId.value = localStorage.getItem("companyId") || "06753"
     companyName.value = localStorage.getItem("companyName") || "SCOP Les Octets Libres"
-    employeeId.value = localStorage.getItem("employeeId") || "011"
-    employeeFullName.value = localStorage.getItem("employeeFullName") || "MORVAN Benjamin Jean"
+    employeeId.value = localStorage.getItem("employeeId") || "000"
+    employeeFullName.value = localStorage.getItem("employeeFullName") || "LASTNAME Given Names"
     employeeSignature.value = localStorage.getItem("employeeSignature") || ""
     const localStorageWorkingDays = JSON.parse(localStorage.getItem("workingDays"))
     workingDays.value = Array.isArray(localStorageWorkingDays) ? localStorageWorkingDays : [1, 2, 3, 4, 5]
