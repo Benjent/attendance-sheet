@@ -60,13 +60,13 @@ function getWorkingCount (date) {
 </script>
 
 <template>
-  <div class="preview bg-white p-6 pr-10 h-screen overflow-y-scroll print:overflow-y-visible" id="preview">
+  <div class="preview bg-white p-6 pr-10 leading-none h-screen overflow-y-scroll print:overflow-y-visible" id="preview">
     <div class="flex">
         <span class="uppercase">{{ companyName }}</span>
-        <span class="flex-1" /><span class="px-10 py-1 text-xl">{{ isValid(periodEndDate) && format(periodEndDate, "MMMM yyyy") }}</span>
-        <span>{{ sheetId }}</span>
+        <span class="px-10 py-1 pb-0.5 text-xl leading-none ml-auto bg-gray-100">{{ isValid(periodEndDate) && format(periodEndDate, "MMMM yyyy") }}</span>
+        <span class="text-[0.9rem]">{{ sheetId }}</span>
     </div>
-    <table class="border-collapse text-xs ">
+    <table class="border-collapse text-xs">
         <thead class="align-top">
             <tr>
                 <th colspan="6" class="text-left pl-5">{{ employeeFullName }}</th>
@@ -78,12 +78,12 @@ function getWorkingCount (date) {
             </tr>
             <tr class="h-10">
                 <th rowspan="2" class="w-20" />
-                <th rowspan="2" class="border border-black w-10">Heures travaillées</th>
+                <th rowspan="2" class="border border-black w-9">Heures travaillées</th>
                 <th colspan="2" class="border border-black">Absences</th>
                 <th colspan="2" class="border border-black">Quantités</th>
                 <th colspan="2" class="border border-black">Période 1</th>
                 <th colspan="2" class="border border-black">Période 2</th>
-                <th colspan="2" class="border border-black uppercase">Zone libre</th>
+                <th colspan="2" class="border border-black uppercase w-[8rem]">Zone libre</th>
                 <th class="border-0" />
                 <th colspan="4" class="border border-black uppercase">Zone service paie</th>
             </tr>
@@ -100,53 +100,53 @@ function getWorkingCount (date) {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="day in tableRows" :key="day">
+            <tr v-for="day in tableRows" :key="day" :class="[2, 4, 6].includes(getDay(day)) && 'bg-gray-100'">
                 <template v-if="!day">
                     <th class="block h-5" />
                     <td v-for="index in 12" :key="index" />
                     <td colspan="4" class="border border-black" />
                 </template>
                 <template v-else>
-                    <th class="border border-black capitalize text-right text-sm">{{ format(day, "E dd/MM").replace(".", "") }}</th>
-                    <td class="border border-black"><input class="h-full w-20" :value="getWorkingCount(day)" /></td>
-                    <td v-for="index in 4" :key="index" class="border border-black"><input class="h-full w-9"  /></td>
+                    <th class="border border-black capitalize text-right text-sm/none">{{ format(day, "E dd/MM").replace(".", "") }}</th>
+                    <td class="border border-black"><input class="h-full w-12 bg-inherit" :value="getWorkingCount(day)" /></td>
+                    <td v-for="index in 4" :key="index" class="border border-black"><input class="h-full w-9 bg-inherit"  /></td>
                     <td v-for="index in 11" :key="index" class="border border-black" :class="{ 'border-0': index === 7 }" />
                 </template>
             </tr>
         </tbody>
     </table>
-    <footer class="grid w-full mt-8">
+    <footer class="grid w-full mt-8 text-sm">
         <div class="flex w-full">
             <span class="uppercase text-right w-1/4">Congés payés du&nbsp;:</span>
             <span>
                 <input class="w-10 text-center" />/<input class="w-10 text-center" />/<input class="w-10 text-center" />
             </span>
-            <span class="text-sm">(1er jour où le salarié aurait du travailler s'il n'était pas en congé)</span>
+            <span class="text-xs">(1er jour où le salarié aurait du travailler s'il n'était pas en congé)</span>
         </div>
         <div class="flex w-full">
             <span class="uppercase text-right w-1/4">au&nbsp;:</span>
             <span>
                 <input class="w-10 text-center" />/<input class="w-10 text-center" />/<input class="w-10 text-center" />
             </span>
-            <span class="text-sm">(veille du jour de reprise)</span>
+            <span class="text-xs">(veille du jour de reprise)</span>
         </div>
-        <div class="flex gap-4">
+        <div class="flex">
             <div>
                 <div>
                     <span class="uppercase">Journée de solidarité&nbsp;:</span>
                     <span><input class="w-5 text-center" /> heures, le</span>
                     <span>
-                        <input class="w-10" />/<input class="w-10" />
+                        <input class="w-7" />/<input class="w-7" />
                     </span>
                 </div>
-                <div class="flex gap-2">
-                    <label class="flex flex-col border border-black flex-1 h-20">
+                <div class="flex gap-2 mr-4">
+                    <label class="flex flex-col border border-black flex-1 h-[4rem]">
                         Signature du salarié&nbsp;:
                         <span v-html="employeeSignature" class="w-full h-3/4" />
                     </label>
                     <div class="flex flex-col">
-                        <span class="text-sm font-bold">{{ sheetId }}</span>
-                        <span class="text-sm">Traitement par</span>
+                        <span class="text-[0.75rem] font-bold">{{ sheetId }}</span>
+                        <span class="text-xs">Traitement par</span>
                         <span class="font-bold">{{ accountant }}</span>
                     </div>
                 </div>
@@ -154,8 +154,8 @@ function getWorkingCount (date) {
             </div>
             <div>
                 <label class="flex flex-col border border-black h-full">
-                    <span class="uppercase text-sm">Informations complémentaires&nbsp;:</span>
-                    <div class="h-full m-2">
+                    <span class="uppercase text-xs">Informations complémentaires&nbsp;:</span>
+                    <div class="h-full m-1">
                         <textarea class="w-full h-full resize-none" />
                     </div>
                 </label>
