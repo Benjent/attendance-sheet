@@ -12,7 +12,7 @@ function retrieveEmployeeDetails () {
     companyId.value = localStorage.getItem("companyId") || "06753"
     companyName.value = localStorage.getItem("companyName") || "SCOP Les Octets Libres"
     employeeId.value = localStorage.getItem("employeeId") || "000"
-    employeeFullName.value = localStorage.getItem("employeeFullName") || "LASTNAME Given Names"
+    employeeFullName.value = localStorage.getItem("employeeFullName") || "LASTNAME Given Name"
     employeeSignature.value = localStorage.getItem("employeeSignature") || ""
     const localStorageWorkingDays = JSON.parse(localStorage.getItem("workingDays"))
     workingDays.value = Array.isArray(localStorageWorkingDays) ? localStorageWorkingDays : [1, 2, 3, 4, 5]
@@ -56,7 +56,7 @@ onMounted(() => {
                 </label>
                 <label class="flex flex-col text-rose-300">
                     Nom complet de l'employé
-                    <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénoms" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénom" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
                     Matricule de l'employé
