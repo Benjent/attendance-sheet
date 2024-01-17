@@ -60,7 +60,7 @@ function getWorkingCount (date) {
 </script>
 
 <template>
-  <div class="preview bg-white p-6 pr-10 leading-none h-screen overflow-y-scroll print:overflow-y-visible" id="preview">
+<div class="preview bg-white p-6 pr-10 leading-none h-screen overflow-y-scroll print:overflow-y-visible" id="preview">
     <div class="flex">
         <span class="uppercase">{{ companyName }}</span>
         <span class="px-10 py-1 pb-0.5 text-xl leading-none ml-auto bg-gray-100">{{ isValid(periodEndDate) && format(periodEndDate, "MMMM yyyy") }}</span>
@@ -77,13 +77,13 @@ function getWorkingCount (date) {
                 </th>
             </tr>
             <tr class="h-10">
-                <th rowspan="2" class="w-20" />
-                <th rowspan="2" class="border border-black w-9">Heures travaillées</th>
+                <th rowspan="2" class="w-[4.7rem]" />
+                <th rowspan="2" class="border border-black">Heures travaillées</th>
                 <th colspan="2" class="border border-black">Absences</th>
                 <th colspan="2" class="border border-black">Quantités</th>
                 <th colspan="2" class="border border-black">Période 1</th>
                 <th colspan="2" class="border border-black">Période 2</th>
-                <th colspan="2" class="border border-black uppercase w-[8rem]">Zone libre</th>
+                <th colspan="2" class="border border-black uppercase w-[6rem]">Zone libre</th>
                 <th class="border-0" />
                 <th colspan="4" class="border border-black uppercase">Zone service paie</th>
             </tr>
@@ -92,10 +92,10 @@ function getWorkingCount (date) {
                 <th class="border border-black">Heures</th>
                 <th class="border border-black">Code*</th>
                 <th class="border border-black">Quantité</th>
-                <th class="border border-black leading-none">Heure arrivée</th>
-                <th class="border border-black leading-none">Heure départ</th>
-                <th class="border border-black leading-none">Heure arrivée</th>
-                <th class="border border-black leading-none">Heure départ</th>
+                <th class="border border-black leading-none w-[3rem]">Heure arrivée</th>
+                <th class="border border-black leading-none w-[3rem]">Heure départ</th>
+                <th class="border border-black leading-none w-[3rem]">Heure arrivée</th>
+                <th class="border border-black leading-none w-[3rem]">Heure départ</th>
                 <th v-for="index in 7" :key="index" class="border border-black" :class="{ 'border-0': index === 3 }">{{ index === 3 ? "" : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" }}</th>
             </tr>
         </thead>
@@ -108,8 +108,8 @@ function getWorkingCount (date) {
                 </template>
                 <template v-else>
                     <th class="border border-black capitalize text-right text-sm/none">{{ format(day, "E dd/MM").replace(".", "") }}</th>
-                    <td class="border border-black"><input class="h-full w-12 bg-inherit" :value="getWorkingCount(day)" /></td>
-                    <td v-for="index in 4" :key="index" class="border border-black"><input class="h-full w-9 bg-inherit"  /></td>
+                    <td class="border border-black"><input class="h-full w-full bg-inherit" :value="getWorkingCount(day)" /></td>
+                    <td v-for="index in 4" :key="index" class="border border-black"><input class="h-full w-9 bg-inherit" /></td>
                     <td v-for="index in 11" :key="index" class="border border-black" :class="{ 'border-0': index === 7 }" />
                 </template>
             </tr>
@@ -163,7 +163,7 @@ function getWorkingCount (date) {
             </div>
         </div>
     </footer>
-  </div>
+</div>
 </template>
 
 <style scoped>
