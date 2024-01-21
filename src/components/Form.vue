@@ -17,6 +17,23 @@ const formLabels = {
     periodCode: "Période",
 }
 
+const leaveCodes = {
+    A01: "Absence autorisée",
+    A02: "Absence non justifiée",
+    A03: "Absence maladie non professionnelle",
+    A04: "Absence maladie professionnelle",
+    A05: "Absence accident du travail",
+    A06: "Absence maternité",
+    A07: "Absence congés payés",
+    A08: "Absence congés sans solde",
+    A09: "Absence congés exceptionnels",
+    A10: "Absence formation professionnelle",
+    A11: "Absence chômage partiel",
+    A12: "Absence chômage intempérie",
+    A13: "Absence congés paternité",
+    A14: "Absence congé de naissance",
+}
+
 const isEmployeeFormShown = ref(false)
 const errorMessage = ref("")
 
@@ -168,22 +185,46 @@ onMounted(() => {
             </fieldset>
             <footer class="flex flex-col gap-5 items-center">
                 <div class="flex flex-col gap-2">
-                    <p>Penser à désactiver les marges dans la fenêtre d'impression.</p>
-                    <p>Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
+                    <p class="text-sm">Penser à désactiver les marges dans la fenêtre d'impression.</p>
+                    <p class="text-sm">Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
                     <button class="w-full py-2 px-4 bg-rose-800 hover:bg-rose-700 font-semibold text-white rounded shadow" type="submit" @click="submit">Générer pdf</button>
-                    <p v-if="errorMessage" class="text-red-500">Les informations suivantes sont invalides&nbsp;: <span class="text-rose-300">{{errorMessage}}</span></p>
+                    <p v-if="errorMessage" class="text-rose-700">Les informations suivantes sont invalides&nbsp;: <span class="text-rose-300">{{errorMessage}}</span></p>
                 </div>
-                <div class="flex flex-col items-center gap-2 text-center">
-                    <p>Prévisualisation et rendu corrects avec</p>
-                    <div class="flex gap-2 justify-center">
-                        <img class="max-h-10" src="@/assets/images/logos/brave.png" alt="Logo du navigateur web Brave" />
-                        <img class="max-h-10" src="@/assets/images/logos/google-chrome.png" alt="Logo du navigateur web Google Chrome" />
-                    </div>
-                    <p>Prévisualisation instable mais rendu correct avec</p>
-                    <div class="flex gap-2 justify-center">
-                        <img class="max-h-10" src="@/assets/images/logos/firefox.png" alt="Logo du navigateur web Firefox" />
-                    </div>
-                </div>
+                <table class="text-sm text-center w-full max-w-md">
+                    <thead>
+                        <tr>
+                            <th>Navigateur</th>
+                            <th>Prévisualisation</th>
+                            <th>Rendu</th>
+                        </tr>
+                    </thead>
+                    <tbody class="not-italic">
+                        <tr>
+                            <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/brave.png" alt="Logo de Brave" /></th>
+                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
+                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
+                        </tr>
+                        <tr>
+                            <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/google-chrome.png" alt="Logo de Google Chrome" /></th>
+                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
+                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
+                        </tr>
+                        <tr>
+                            <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/firefox.png" alt="Logo de Firefox" /></th>
+                            <td><div class="w-3 h-4 m-auto bg-rose-700 rounded-full" /></td>
+                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <details class="cursor-pointer w-full py-2 px-4 bg-slate-800 hover:bg-slate-700 font-semibold rounded shadow">
+                    <summary>Codes d'absence</summary>
+                    <dl class="mt-2">
+                        <div v-for="(value, key) in leaveCodes" :key="key" class="flex gap-2">
+                            <dt class="w-10">{{key}}</dt>
+                            <dd class="text-rose-300">{{value}}</dd>
+                        </div>
+                    </dl>
+                </details>
             </footer>
         </div>
     </form>

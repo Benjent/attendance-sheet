@@ -25,10 +25,6 @@ This is a [Vue.js v3](https://vuejs.org/) project bootstrapped with [Create Vue]
 - [Date-holidays](https://www.npmjs.com/package/date-holidays) (date handling)
 - [Tailwind CSS](https://tailwindcss.com/) (CSS library)
 
-## TODO
-
-- [ ] Add annual leave completion (second page)
-
 ## Prerequisites
 
 - [Node](https://nodejs.org/en/)
