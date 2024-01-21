@@ -9,8 +9,8 @@ const { accountant, companyId, companyName, employeeFullName, employeeId, employ
 const { periodCode } = storeToRefs(usePeriodStore())
 
 function retrieveEmployeeDetails () {
-    companyId.value = localStorage.getItem("companyId") || "06753"
-    companyName.value = localStorage.getItem("companyName") || "SCOP Les Octets Libres"
+    companyId.value = localStorage.getItem("companyId") || "00000"
+    companyName.value = localStorage.getItem("companyName") || "Company Name"
     employeeId.value = localStorage.getItem("employeeId") || "000"
     employeeFullName.value = localStorage.getItem("employeeFullName") || "LASTNAME Given Name"
     employeeSignature.value = localStorage.getItem("employeeSignature") || ""
