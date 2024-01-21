@@ -121,11 +121,15 @@ onMounted(() => {
                     <p>Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
                     <button class="w-full py-2 px-4 bg-rose-800 hover:bg-rose-700 font-semibold text-white rounded shadow" @click="printPreview" type="submit">Générer pdf</button>
                 </div>
-                <div class="flex flex-col items-center gap-2">
-                    <p>Meilleur rendu avec</p>
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <p>Prévisualisation et rendu corrects avec</p>
                     <div class="flex gap-2 justify-center">
                         <img class="max-h-10" src="@/assets/images/logos/brave.png" alt="Logo du navigateur web Brave" />
                         <img class="max-h-10" src="@/assets/images/logos/google-chrome.png" alt="Logo du navigateur web Google Chrome" />
+                    </div>
+                    <p>Prévisualisation instable mais rendu correct avec</p>
+                    <div class="flex gap-2 justify-center">
+                        <img class="max-h-10" src="@/assets/images/logos/firefox.png" alt="Logo du navigateur web Firefox" />
                     </div>
                 </div>
             </footer>
