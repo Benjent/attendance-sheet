@@ -44,7 +44,7 @@ onMounted(() => {
 
 <template>
     <form class="print:hidden h-screen w-auto flex flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic overflow-y-auto">
-        <form v-if="isEmployeeFormShown" class="h-full flex flex-col gap-5 items-center">
+        <form v-if="isEmployeeFormShown" class="h-full flex flex-col gap-5 items-center max-w-[400px]">
             <div class="flex flex-col gap-5">
                 <label class="flex flex-col text-rose-300">
                     Nom de l'entreprise
@@ -103,14 +103,14 @@ onMounted(() => {
             </div>
             <button class="py-2 px-4 bg-orange-700 hover:bg-orange-600 font-semibold rounded shadow" @click="saveEmployeeDetails" type="button">Sauvegarder mes informations</button>
         </form>
-        <div v-else class="flex flex-col gap-5">
-            <button class="py-2 px-4 bg-orange-700 hover:bg-orange-600 font-semibold rounded shadow" @click="isEmployeeFormShown = true" type="button">Modifier mes informations</button>
+        <div v-else class="flex flex-col gap-5 max-w-[600px]">
+            <button class="w-fit m-auto py-2 px-4 bg-orange-700 hover:bg-orange-600 font-semibold rounded shadow" @click="isEmployeeFormShown = true" type="button">Modifier mes informations</button>
             <fieldset class="flex flex-col gap-5">
                 <label class="flex flex-col text-rose-300">
                     Période
                     <input v-model="periodCode" placeholder="AA MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
-                <label class="flex flex-col text-rose-300">
+                <label class="flex flex-col text-rose-300 max-w-xs">
                     Comptable
                     <input v-model="accountant" placeholder="Prénom" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
