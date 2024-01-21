@@ -1,25 +1,49 @@
 <script setup>
-import { onMounted, ref } from "vue"
+import { computed, onMounted, ref } from "vue"
 import { storeToRefs } from "pinia"
 import { useEmployeeStore } from "@/stores/employee"
 import { usePeriodStore } from "@/stores/period"
 import { COMPANY_ID_LENGTH, EMPLOYEE_ID_LENGTH, PERIOD_CODE_LENGTH } from "@/globals"
 
 const { accountant, companyId, companyName, employeeFullName, employeeId, employeeSignature, workingDays, workingHourCount } = storeToRefs(useEmployeeStore())
-const { periodCode } = storeToRefs(usePeriodStore())
+const { periodCode, periodMonth, periodYear } = storeToRefs(usePeriodStore())
 
-function retrieveEmployeeDetails () {
-    companyId.value = localStorage.getItem("companyId") || "00000"
-    companyName.value = localStorage.getItem("companyName") || "Company Name"
-    employeeId.value = localStorage.getItem("employeeId") || "000"
-    employeeFullName.value = localStorage.getItem("employeeFullName") || "LASTNAME Given Name"
+const formLabels = {
+    accountant: "Comptable",
+    companyId: "Matricule de l'entreprise",
+    companyName: "Nom de l'entreprise",
+    employeeId: "Matricule de l'employé",
+    employeeFullName: "Nom complet de l'employé",
+    periodCode: "Période",
+}
+
+const isEmployeeFormShown = ref(false)
+const errorMessage = ref("")
+
+const isCompanyIdValid = computed(() => {
+    return companyId.value?.length === COMPANY_ID_LENGTH
+})
+
+const isEmployeeIdValid = computed(() => {
+    return employeeId.value?.length === EMPLOYEE_ID_LENGTH
+})
+
+const isPeriodCodeValid = computed(() => {
+    return periodCode.value?.length === PERIOD_CODE_LENGTH
+})
+
+function retrieveEmployeeDetails() {
+    companyId.value = localStorage.getItem("companyId")
+    companyName.value = localStorage.getItem("companyName")
+    employeeId.value = localStorage.getItem("employeeId")
+    employeeFullName.value = localStorage.getItem("employeeFullName")
     employeeSignature.value = localStorage.getItem("employeeSignature") || ""
     const localStorageWorkingDays = JSON.parse(localStorage.getItem("workingDays"))
     workingDays.value = Array.isArray(localStorageWorkingDays) ? localStorageWorkingDays : [1, 2, 3, 4, 5]
     workingHourCount.value = localStorage.getItem("workingHourCount") || 7
 }
 
-function saveEmployeeDetails () {
+function saveEmployeeDetails() {
     companyId.value && localStorage.setItem("companyId", companyId.value)
     companyName.value && localStorage.setItem("companyName", companyName.value)
     employeeId.value && localStorage.setItem("employeeId", employeeId.value)
@@ -31,11 +55,38 @@ function saveEmployeeDetails () {
     isEmployeeFormShown.value = false
 }
 
-function printPreview () {
-    window.print()
+function getPeriodDocumentTitle() {
+    const fullYearPeriod = `20${periodYear.value}-${periodMonth.value}`
+    const employeeAcronym = employeeFullName.value.split(/[ -]/).map((name) => name[0]).join("")
+    return `${fullYearPeriod} - ${employeeAcronym}`
 }
 
-const isEmployeeFormShown = ref(false)
+function printPreview() {
+    const appName = document.title
+    document.title = getPeriodDocumentTitle()
+    window.print()
+    document.title = appName
+}
+
+function submit() {
+    errorMessage.value = ""
+
+    const formValues = {
+        companyName: companyName.value,
+        companyId: isCompanyIdValid.value,
+        employeeFullName: employeeFullName.value,
+        employeeId: isEmployeeIdValid.value,
+        periodCode: isPeriodCodeValid.value,
+        accountant: accountant.value,
+    }
+    const isFormValid = Object.values(formValues).every(Boolean)
+    if (!isFormValid) {
+        errorMessage.value = Object.entries(formValues).filter((entry) => !entry[1]).map((entry) => formLabels[entry[0]]).join(", ")
+        return
+    }
+
+    printPreview()
+}
 
 onMounted(() => {
     retrieveEmployeeDetails()
@@ -47,19 +98,19 @@ onMounted(() => {
         <form v-if="isEmployeeFormShown" class="h-full flex flex-col gap-5 items-center max-w-[400px]">
             <div class="flex flex-col gap-5">
                 <label class="flex flex-col text-rose-300">
-                    Nom de l'entreprise
-                    <input v-model="companyName" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    {{formLabels.companyName}}
+                    <input v-model="companyName" placeholder="Nom De l'Entreprise" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
-                    Matricule de l'entreprise
+                    {{formLabels.companyId}}
                     <input v-model="companyId" :maxlength="COMPANY_ID_LENGTH" placeholder="00000" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
-                    Nom complet de l'employé
+                    {{formLabels.employeeFullName}}
                     <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénom" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
-                    Matricule de l'employé
+                    {{formLabels.employeeId}}
                     <input v-model="employeeId" :maxlength="EMPLOYEE_ID_LENGTH" placeholder="000" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300">
@@ -107,11 +158,11 @@ onMounted(() => {
             <button class="w-fit m-auto py-2 px-4 bg-orange-700 hover:bg-orange-600 font-semibold rounded shadow" @click="isEmployeeFormShown = true" type="button">Modifier mes informations</button>
             <fieldset class="flex flex-col gap-5">
                 <label class="flex flex-col text-rose-300">
-                    Période
+                    {{formLabels.periodCode}}
                     <input v-model="periodCode" placeholder="AA MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
                 <label class="flex flex-col text-rose-300 max-w-xs">
-                    Comptable
+                    {{formLabels.accountant}}
                     <input v-model="accountant" placeholder="Prénom" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
             </fieldset>
@@ -119,7 +170,8 @@ onMounted(() => {
                 <div class="flex flex-col gap-2">
                     <p>Penser à désactiver les marges dans la fenêtre d'impression.</p>
                     <p>Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
-                    <button class="w-full py-2 px-4 bg-rose-800 hover:bg-rose-700 font-semibold text-white rounded shadow" type="submit" @click="printPreview">Générer pdf</button>
+                    <button class="w-full py-2 px-4 bg-rose-800 hover:bg-rose-700 font-semibold text-white rounded shadow" type="submit" @click="submit">Générer pdf</button>
+                    <p v-if="errorMessage" class="text-red-500">Les informations suivantes sont invalides&nbsp;: <span class="text-rose-300">{{errorMessage}}</span></p>
                 </div>
                 <div class="flex flex-col items-center gap-2 text-center">
                     <p>Prévisualisation et rendu corrects avec</p>
