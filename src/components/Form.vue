@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <form class="print:hidden h-screen w-auto flex flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic overflow-y-auto">
+    <form @submit.prevent class="print:hidden h-screen w-auto flex flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic overflow-y-auto">
         <form v-if="isEmployeeFormShown" class="h-full flex flex-col gap-5 items-center max-w-[400px]">
             <div class="flex flex-col gap-5">
                 <label class="flex flex-col text-rose-300">
@@ -119,7 +119,7 @@ onMounted(() => {
                 <div class="flex flex-col gap-2">
                     <p>Penser à désactiver les marges dans la fenêtre d'impression.</p>
                     <p>Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
-                    <button class="w-full py-2 px-4 bg-rose-800 hover:bg-rose-700 font-semibold text-white rounded shadow" @click="printPreview" type="submit">Générer pdf</button>
+                    <button class="w-full py-2 px-4 bg-rose-800 hover:bg-rose-700 font-semibold text-white rounded shadow" type="submit" @click="printPreview">Générer pdf</button>
                 </div>
                 <div class="flex flex-col items-center gap-2 text-center">
                     <p>Prévisualisation et rendu corrects avec</p>
