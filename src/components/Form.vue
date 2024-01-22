@@ -112,7 +112,7 @@ onMounted(() => {
 
 <template>
     <form @submit.prevent class="print:hidden h-screen w-auto flex flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic overflow-y-auto">
-        <form v-if="isEmployeeFormShown" class="h-full flex flex-col gap-5 items-center max-w-[400px]">
+        <form v-if="isEmployeeFormShown" class="h-full flex flex-col gap-5 items-center w-[400px]">
             <div class="flex flex-col gap-5">
                 <label class="flex flex-col text-rose-300">
                     {{formLabels.companyName}}
@@ -169,59 +169,68 @@ onMounted(() => {
                     </label>
                 </fieldset>
             </div>
-            <button class="py-2 px-4 bg-orange-700 hover:bg-orange-600 font-semibold rounded shadow" @click="saveEmployeeDetails" type="button">Sauvegarder mes informations</button>
+            <button class="w-full button-secondary" type="button" @click="saveEmployeeDetails">Sauvegarder mes informations</button>
         </form>
-        <div v-else class="flex flex-col gap-5 max-w-[600px]">
-            <button class="w-fit m-auto py-2 px-4 bg-orange-700 hover:bg-orange-600 font-semibold rounded shadow" @click="isEmployeeFormShown = true" type="button">Modifier mes informations</button>
-            <fieldset class="flex flex-col gap-5">
+        <div v-else class="flex flex-col gap-8 max-w-[400px]">
+            <button class="w-full m-auto button-secondary" type="button" @click="isEmployeeFormShown = true">Modifier mes informations</button>
+            <fieldset class="flex  gap-5">
                 <label class="flex flex-col text-rose-300">
                     {{formLabels.periodCode}}
                     <input v-model="periodCode" placeholder="AA MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
-                <label class="flex flex-col text-rose-300 max-w-xs">
+                <label class="flex flex-col w-full text-rose-300">
                     {{formLabels.accountant}}
                     <input v-model="accountant" placeholder="Prénom" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
                 </label>
             </fieldset>
             <footer class="flex flex-col gap-5 items-center">
                 <div class="flex flex-col gap-2">
-                    <p class="text-sm">Penser à désactiver les marges dans la fenêtre d'impression.</p>
-                    <p class="text-sm">Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
-                    <button class="w-full py-2 px-4 bg-rose-800 hover:bg-rose-700 font-semibold text-white rounded shadow" type="submit" @click="submit">Générer pdf</button>
-                    <p v-if="errorMessage" class="text-rose-700">Les informations suivantes sont invalides&nbsp;: <span class="text-rose-300">{{errorMessage}}</span></p>
+                    <button class="w-full py-3 px-6 bg-slate-200 hover:bg-slate-100 tracking-widest uppercase text-rose-800 rounded-sm shadow" type="submit" @click="submit">Générer pdf</button>
+                    <p v-if="errorMessage" class="text-rose-600">Les informations suivantes sont invalides&nbsp;: <span class="text-rose-300">{{errorMessage}}</span></p>
                 </div>
-                <table class="text-sm text-center w-full max-w-md">
-                    <thead>
-                        <tr>
-                            <th>Navigateur</th>
-                            <th>Prévisualisation</th>
-                            <th>Rendu</th>
-                        </tr>
-                    </thead>
-                    <tbody class="not-italic">
-                        <tr>
-                            <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/brave.png" alt="Logo de Brave" /></th>
-                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
-                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
-                        </tr>
-                        <tr>
-                            <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/google-chrome.png" alt="Logo de Google Chrome" /></th>
-                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
-                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
-                        </tr>
-                        <tr>
-                            <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/firefox.png" alt="Logo de Firefox" /></th>
-                            <td><div class="w-3 h-4 m-auto bg-rose-700 rounded-full" /></td>
-                            <td><div class="w-3 h-4 m-auto bg-lime-500 rounded-full" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <details class="cursor-pointer w-full py-2 px-4 bg-slate-800 hover:bg-slate-700 font-semibold rounded shadow">
+                <details class="cursor-pointer w-full py-3 px-6 text-rose-300 bg-slate-800 hover:bg-slate-700 font-semibold rounded-sm shadow">
+                    <summary>Problèmes lors de la prévisualisation</summary>
+                    <div class="flex flex-col gap-6 mt-2">
+                        <p class="text-sm">Penser à désactiver les marges dans la fenêtre d'impression.</p>
+                        <p class="text-sm">Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
+                        <div>
+
+                            <p class="text-sm">Certains navigateurs prévisualisent mal les tableaux, mais produisent quand-même le rendu final attendu&nbsp;:</p>
+                            <table class="text-sm text-center w-full max-w-md mt-2">
+                                <thead>
+                                    <tr>
+                                        <th>Navigateur</th>
+                                        <th>Prévisualisation</th>
+                                        <th>Rendu</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="not-italic">
+                                    <tr>
+                                        <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/brave.png" alt="Logo de Brave" /></th>
+                                        <td><div class="w-3 h-3 m-auto bg-green-500 rounded-full" /></td>
+                                        <td><div class="w-3 h-3 m-auto bg-green-500 rounded-full" /></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/google-chrome.png" alt="Logo de Google Chrome" /></th>
+                                        <td><div class="w-3 h-3 m-auto bg-green-500 rounded-full" /></td>
+                                        <td><div class="w-3 h-3 m-auto bg-green-500 rounded-full" /></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="p-1"><img class="max-h-6 m-auto" src="@/assets/images/logos/firefox.png" alt="Logo de Firefox" /></th>
+                                        <td><div class="w-3 h-3 m-auto bg-rose-700 rounded-full" /></td>
+                                        <td><div class="w-3 h-3 m-auto bg-green-500 rounded-full" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </details>
+                <details class="cursor-pointer w-full py-3 px-6 text-rose-300 bg-slate-800 hover:bg-slate-700 font-semibold rounded-sm shadow">
                     <summary>Codes d'absence</summary>
                     <dl class="mt-2">
                         <div v-for="(value, key) in leaveCodes" :key="key" class="flex gap-2">
-                            <dt class="w-10">{{key}}</dt>
-                            <dd class="text-rose-300">{{value}}</dd>
+                            <dt class="w-10 text-white text-right">{{key}}</dt>
+                            <dd>{{value}}</dd>
                         </div>
                     </dl>
                 </details>
