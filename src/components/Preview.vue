@@ -62,18 +62,18 @@ function getWorkingCount(date) {
 <template>
 <div class="preview bg-white p-6 pr-10 leading-none h-screen overflow-y-scroll print:overflow-y-visible" id="preview">
     <div class="flex">
-        <span class="uppercase">{{ companyName }}</span>
-        <span class="px-10 py-1 pb-0.5 text-xl leading-none ml-auto bg-gray-100">{{ isValid(periodEndDate) && format(periodEndDate, "MMMM yyyy") }}</span>
-        <span class="text-[0.9rem]">{{ sheetId }}</span>
+        <span class="uppercase font-bold">{{ companyName }}</span>
+        <span class="px-10 py-1 pb-0.5 text-lg leading-none ml-auto mr-1 mb-1 bg-gray-100">{{ isValid(periodEndDate) && format(periodEndDate, "MMMM yyyy") }}</span>
+        <span class="text-[0.9rem] font-bold">{{ sheetId }}</span>
     </div>
     <table class="border-collapse text-xs">
         <thead class="align-top">
             <tr>
-                <th colspan="6" class="text-left pl-5">{{ employeeFullName }}</th>
+                <th colspan="6" class="text-left pl-5 font-bold text-sm">{{ employeeFullName }}</th>
                 <th colspan="4" class="border border-black uppercase">Horaires de travail</th>
                 <th colspan="7">
-                    Du <span class="text-base">{{ isValid(periodStartDate) && format(periodStartDate, "dd/MM") }}</span>
-                    au <span class="text-base">{{ isValid(periodEndDate) && format(periodEndDate, "dd/MM") }}</span>
+                    Du <span class="font-bold">{{ isValid(periodStartDate) && format(periodStartDate, "dd/MM/yyyy") }}</span>
+                    au <span class="font-bold">{{ isValid(periodEndDate) && format(periodEndDate, "dd/MM/yyyy") }}</span>
                 </th>
             </tr>
             <tr class="h-10">
@@ -83,7 +83,7 @@ function getWorkingCount(date) {
                 <th colspan="2" class="border border-black">Quantités</th>
                 <th colspan="2" class="border border-black">Période 1</th>
                 <th colspan="2" class="border border-black">Période 2</th>
-                <th colspan="2" class="border border-black uppercase w-[6rem]">Zone libre</th>
+                <th colspan="2" class="border border-black uppercase w-40">Zone libre</th>
                 <th class="border-0" />
                 <th colspan="4" class="border border-black uppercase">Zone service paie</th>
             </tr>
