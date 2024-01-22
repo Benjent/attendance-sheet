@@ -46,3 +46,7 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## To do
+
+- [ ] Find the exact font family used in the ICOOPA sheet to be 100% correct on sizes (font size, letter spacing, font boldness, ...)
