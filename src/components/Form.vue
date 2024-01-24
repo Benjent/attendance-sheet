@@ -111,41 +111,41 @@ onMounted(() => {
 </script>
 
 <template>
-    <form @submit.prevent class="print:hidden h-screen w-auto flex flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-slate-100 italic overflow-y-auto">
+    <form @submit.prevent class="print:hidden h-screen w-auto flex flex-1 p-10 gap-10 justify-center items-center bg-slate-900 rounded-2xl shadow-2xl text-rose-300 italic overflow-y-auto">
         <form v-if="isEmployeeFormShown" class="h-full flex flex-col gap-5 items-center w-[400px]">
             <div class="flex flex-col gap-5">
-                <label class="flex flex-col text-rose-300">
+                <label class="flex flex-col">
                     {{formLabels.companyName}}
-                    <input v-model="companyName" placeholder="Nom De l'Entreprise" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <input v-model="companyName" placeholder="Nom De l'Entreprise" class="input" />
                 </label>
-                <label class="flex flex-col text-rose-300">
+                <label class="flex flex-col">
                     {{formLabels.companyId}}
-                    <input v-model="companyId" :maxlength="COMPANY_ID_LENGTH" placeholder="00000" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <input v-model="companyId" :maxlength="COMPANY_ID_LENGTH" placeholder="00000" class="input" />
                 </label>
-                <label class="flex flex-col text-rose-300">
+                <label class="flex flex-col">
                     {{formLabels.employeeFullName}}
-                    <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénom" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <input v-model="employeeFullName" placeholder="NOM DE FAMILLE Prénom" class="input" />
                 </label>
-                <label class="flex flex-col text-rose-300">
+                <label class="flex flex-col">
                     {{formLabels.employeeId}}
-                    <input v-model="employeeId" :maxlength="EMPLOYEE_ID_LENGTH" placeholder="000" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <input v-model="employeeId" :maxlength="EMPLOYEE_ID_LENGTH" placeholder="000" class="input" />
                 </label>
-                <label class="flex flex-col text-rose-300">
+                <label class="flex flex-col">
                     Signature de l'employé
-                    <p class="text-white">
+                    <p class="text-slate-100">
                         Penser à ajouter
                         <span class="font-mono text-sm text-cyan-400">
                             class="<span class="text-amber-400">h-full w-full</span>"
                         </span>
                         au tag svg
                     </p>
-                    <textarea v-model="employeeSignature" placeholder="<svg class='h-full w-full'>...</svg>" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <textarea v-model="employeeSignature" placeholder="<svg class='h-full w-full'>...</svg>" class="input" />
                 </label>
-                <label class="flex flex-col text-rose-300">
+                <label class="flex flex-col">
                     Heures travaillées par défaut
-                    <input v-model.number="workingHourCount" type="number" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <input v-model.number="workingHourCount" type="number" class="w-20 input" />
                 </label>
-                <fieldset class="flex flex-col text-rose-300">
+                <fieldset class="flex flex-col">
                     <legend>Jours travaillés par défaut</legend>
                     <label>
                         <input v-model="workingDays" type="checkbox" :value="1" />
@@ -169,33 +169,33 @@ onMounted(() => {
                     </label>
                 </fieldset>
             </div>
-            <button class="w-full button-secondary" type="button" @click="saveEmployeeDetails">Sauvegarder mes informations</button>
+            <button class="button-secondary w-full" type="button" @click="saveEmployeeDetails">Sauvegarder mes informations</button>
         </form>
         <div v-else class="flex flex-col gap-8 max-w-[400px]">
-            <button class="w-full m-auto button-secondary" type="button" @click="isEmployeeFormShown = true">Modifier mes informations</button>
-            <fieldset class="flex  gap-5">
-                <label class="flex flex-col text-rose-300">
+            <button class="button-secondary w-full m-auto" type="button" @click="isEmployeeFormShown = true">Modifier mes informations</button>
+            <fieldset class="flex gap-5">
+                <label class="flex flex-col">
                     {{formLabels.periodCode}}
-                    <input v-model="periodCode" placeholder="AA MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <input v-model="periodCode" placeholder="AA MM" :maxlength="PERIOD_CODE_LENGTH" class="w-20 input" />
                 </label>
-                <label class="flex flex-col w-full text-rose-300">
+                <label class="flex flex-col w-full">
                     {{formLabels.accountant}}
-                    <input v-model="accountant" placeholder="Prénom" class="mt-2 py-1 px-2 rounded border border-b-2 border-b-rose-300 border-slate-600 bg-slate-700 text-slate-100" />
+                    <input v-model="accountant" placeholder="Prénom" class="input" />
                 </label>
             </fieldset>
             <footer class="flex flex-col gap-5 items-center">
-                <div class="flex flex-col gap-2">
-                    <button class="w-full py-3 px-6 bg-slate-200 hover:bg-slate-100 tracking-widest uppercase text-rose-800 rounded-sm shadow" type="submit" @click="submit">Générer pdf</button>
+                <div class="flex flex-col gap-2 w-full">
+                    <button class="button-primary" type="submit" @click="submit">Générer pdf</button>
                     <p v-if="errorMessage" class="text-rose-600">Les informations suivantes sont invalides&nbsp;: <span class="text-rose-300">{{errorMessage}}</span></p>
                 </div>
-                <details class="cursor-pointer w-full py-3 px-6 text-rose-300 bg-slate-800 hover:bg-slate-700 font-semibold rounded-sm shadow">
-                    <summary>Problèmes lors de la prévisualisation</summary>
-                    <div class="flex flex-col gap-6 mt-2">
-                        <p class="text-sm">Penser à désactiver les marges dans la fenêtre d'impression.</p>
-                        <p class="text-sm">Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
+                <details class="details w-full">
+                    <summary class="summary w-full">Problèmes lors de la prévisualisation</summary>
+                    <div class="details-body flex flex-col gap-6">
+                        <p class="text-sm text-slate-100">Penser à désactiver les marges dans la fenêtre d'impression.</p>
+                        <p class="text-sm text-slate-100">Pour préserver les nuances de gris, penser à activer les graphiques d'arrière-plan dans la fenêtre d'impression.</p>
                         <div>
 
-                            <p class="text-sm">Certains navigateurs prévisualisent mal les tableaux, mais produisent quand-même le rendu final attendu&nbsp;:</p>
+                            <p class="text-sm text-slate-100">Certains navigateurs prévisualisent mal les tableaux, mais produisent quand-même le rendu final attendu&nbsp;:</p>
                             <table class="text-sm text-center w-full max-w-md mt-2">
                                 <thead>
                                     <tr>
@@ -225,11 +225,11 @@ onMounted(() => {
                         </div>
                     </div>
                 </details>
-                <details class="cursor-pointer w-full py-3 px-6 text-rose-300 bg-slate-800 hover:bg-slate-700 font-semibold rounded-sm shadow">
-                    <summary>Codes d'absence</summary>
-                    <dl class="mt-2">
+                <details class="details w-full">
+                    <summary class="summary">Codes d'absence</summary>
+                    <dl class="details-body">
                         <div v-for="(value, key) in leaveCodes" :key="key" class="flex gap-2">
-                            <dt class="w-10 text-white text-right">{{key}}</dt>
+                            <dt class="w-10 text-slate-100 text-right">{{key}}</dt>
                             <dd>{{value}}</dd>
                         </div>
                     </dl>
