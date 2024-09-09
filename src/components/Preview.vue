@@ -29,7 +29,7 @@ const periodStartDate = computed(() => {
 const periodEndDate = computed(() => {
     if (!periodStartDate.value) return
     const earliestEligibleDate = new Date(getYear(periodStartDate.value), getMonth(periodStartDate.value) + 1, FIRST_ELIGIBLE_PERIOD_DAY - 1)
-    return isSunday(earliestEligibleDate) ? earliestEligibleDate : endOfWeek(earliestEligibleDate) // TODO vérifier février ?
+    return isSunday(earliestEligibleDate) ? earliestEligibleDate : endOfWeek(earliestEligibleDate)
 })
 
 const periodDays = computed(() => {
